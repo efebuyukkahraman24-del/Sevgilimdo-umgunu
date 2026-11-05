@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyi ki Doğdun Mervem</title>
+    <!-- Tailwind CSS for layout -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Elegant Serif and Cursive Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
+        /* Base Theme */
         body {
             background: radial-gradient(circle at center, #3a0005 0%, #0a0000 100%);
             color: #fdfbf7;
@@ -18,163 +21,989 @@
             margin: 0;
             padding: 0;
         }
-        .font-cursive { font-family: 'Great Vibes', cursive; }
+
+        /* Custom Typography */
+        .font-cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Gold Glowing Effects */
         .text-glow-gold {
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(218, 165, 32, 0.4);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 
+                         0 0 20px rgba(218, 165, 32, 0.4), 
+                         0 0 30px rgba(255, 215, 0, 0.2);
             color: #ffd700;
         }
-        .text-glow-red { text-shadow: 0 0 15px rgba(255, 0, 50, 0.8); }
-        .gold-border { border: 1px solid rgba(255, 215, 0, 0.3); box-shadow: 0 0 15px rgba(218, 165, 32, 0.2); }
+        .text-glow-red {
+            text-shadow: 0 0 15px rgba(255, 0, 50, 0.8), 
+                         0 0 30px rgba(200, 0, 0, 0.5);
+        }
+        
+        .gold-border {
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.2);
+        }
 
+        /* Floating Hearts Animation */
         #hearts-container {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: 0; overflow: hidden;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
+
         .heart {
-            position: absolute; bottom: -10vh;
-            color: rgba(255, 50, 50, 0.6); font-size: 24px;
+            position: absolute;
+            bottom: -10vh;
+            color: rgba(255, 50, 50, 0.6);
+            font-size: 24px;
             animation: floatUp 10s linear infinite;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
+
         @keyframes floatUp {
-            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(0) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
+        /* Polaroid Gallery */
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+            z-index: 20;
+        }
+
+        /* Timeline Custom Line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #ffd700, transparent);
+            transform: translateX(-50%);
+        }
+
+        /* Letter Styling */
         .letter-container {
-            background: rgba(20, 0, 0, 0.6); backdrop-filter: blur(10px);
+            background: rgba(20, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 215, 0, 0.4);
             box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,0,0,0.1);
         }
         .drop-cap:first-letter {
-            float: left; font-size: 4rem; line-height: 1; padding-right: 8px;
-            color: #ffd700; font-family: 'Great Vibes', cursive;
+            float: left;
+            font-size: 4rem;
+            line-height: 1;
+            padding-right: 8px;
+            color: #ffd700;
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
+        /* Music Button */
         .music-btn {
-            position: fixed; bottom: 30px; right: 30px; z-index: 50;
-            background: rgba(20, 0, 0, 0.8); border: 1px solid #ffd700;
-            color: #ffd700; border-radius: 50%; width: 60px; height: 60px;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            background: rgba(20, 0, 0, 0.8);
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Flip Cards */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 180px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .flip-card-front {
+            background: rgba(20, 0, 0, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+        }
+        .flip-card-back {
+            background: rgba(40, 0, 0, 0.8);
+            border: 1px solid #ffd700;
+            color: #fdfbf7;
+            transform: rotateY(180deg);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2) inset;
+        }
+
+        /* Checklist */
+        .check-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+        .check-item:hover {
+            transform: translateX(10px);
+            background: rgba(30, 0, 0, 0.6);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+        }
+        .check-icon {
+            color: #ffd700;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- YENİ EKLENEN STİLLER --- */
+        
+        /* Gift Box */
+        .gift-box { 
+            cursor: pointer; 
+            animation: shake 2s infinite; 
+            font-size: 6rem; 
+            text-align: center; 
+            transition: transform 0.3s; 
+            user-select: none;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        /* YENİ EKLENEN EFEKTLER */
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 10px #fff; }
+        }
+        
+        .gift-reveal { 
+    <style>
+        /* Base Theme */
+        body {
+            background: radial-gradient(circle at center, #3a0005 0%, #0a0000 100%);
+            color: #fdfbf7;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .gift-reveal.show { 
+            display: block; 
+            opacity: 1; 
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Running Button Area */
+        .love-question-container { 
+            text-align: center; 
+            position: relative; 
+            min-height: 250px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+        .btn-yes, .btn-no { 
+            padding: 12px 35px; 
+            font-size: 1.5rem; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            border: none; 
+            outline: none; 
+            font-family: 'Playfair Display', serif; 
+            font-weight: bold; 
+            z-index: 20;
+        }
+        .btn-yes { 
+            background-color: #ffd700; 
+            color: #3a0005; 
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-yes:hover { 
+            transform: scale(1.1); 
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+        .btn-no { 
+            background-color: #333; 
+            color: #ccc; 
+            position: absolute; 
+            transition: top 0.2s ease, left 0.2s ease; 
+        }
+
+        /* Movie Credits */
+        .credits-container { 
+            position: relative; 
+            overflow: hidden; 
+            height: 350px; 
+            width: 100%; 
+            background: linear-gradient(to bottom, transparent, #0a0000, transparent); 
+            border-top: 1px solid rgba(255,215,0,0.3); 
+            border-bottom: 1px solid rgba(255,215,0,0.3); 
+            display: flex; 
+            justify-content: center; 
+        }
+        .credits-content { 
+            position: absolute; 
+            bottom: -100%; 
+            text-align: center; 
+            width: 100%; 
+            animation: scrollCredits 20s linear infinite; 
+        }
+        @keyframes scrollCredits {
+            0% { bottom: -120%; }
+            100% { bottom: 120%; }
+        }
+        .credit-role { 
+            font-size: 1.2rem; 
+            color: #aaa; 
+            margin-bottom: 5px; 
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .credit-name { 
+            font-size: 3rem; 
+            color: #ffd700; 
+            font-family: 'Great Vibes', cursive; 
+            margin-bottom: 40px; 
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
     </style>
 </head>
-<body class="relative min-h-screen antialiased">
+<body class="relative min-h-screen antialiased selection:bg-red-900 selection:text-gold-200" style="overflow: hidden;">
 
-    <!-- Giriş Ekranı -->
-    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#050000] flex flex-col items-center justify-center px-4">
+    <!-- Kilit Ekranı (Giriş) -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#050000] flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
         <div class="text-center max-w-md w-full">
+            <svg class="w-16 h-16 mx-auto text-yellow-500 mb-6 drop-shadow-[0_0_15px_rgba(255,215,0,0.6)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
             <h2 class="font-cursive text-4xl md:text-5xl text-yellow-500 mb-4 text-glow-gold">Kalbimin sahibine özel...</h2>
-            <p class="text-gray-300 mb-8 font-light italic">Sürprizi görmek için butona tıkla sevgilim.</p>
-            <button id="unlockBtn" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-bold w-full hover:bg-yellow-400 transition-all">Siteye Giriş Yap ❤️</button>
+            <p class="text-gray-300 mb-8 font-light italic">Kilitli kapıyı açmak için o tarihi girmelisin.</p>
+            <input type="text" id="lockPassword" placeholder="En uzun gecemizin tarihi (GG.AA.YYYY)" class="w-full bg-black/50 border border-yellow-500/50 rounded-full px-6 py-3 text-center text-white focus:outline-none focus:border-yellow-400 mb-4 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
+            <button id="unlockBtn" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-bold w-full hover:bg-yellow-400 hover:shadow-[0_0_20px_rgba(255,215,0,0.6)] transition-all">Kilidi Aç</button>
+            <p id="lockError" class="text-red-500 mt-4 hidden text-sm">Yanlış tarih sevgilim, tekrar dene...</p>
         </div>
     </div>
 
-    <!-- Audio Element (Dosya adını sarkimiz.mp3 yaptığından emin ol) -->
-    <audio id="bgMusic" loop preload="auto">
+    <!-- Audio Element & Floating Button -->
+    <audio id="bgMusic" loop>
         <source src="sarkimiz.mp3" type="audio/mpeg">
     </audio>
-    <button id="musicToggle" class="music-btn" title="Müziği Başlat/Durdur">🎵</button>
+    <button id="musicToggle" class="music-btn" title="Müziği Başlat/Durdur">
+        <svg id="playIcon" class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+        </svg>
+        <svg id="pauseIcon" class="w-8 h-8 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+        </svg>
+    </button>
 
+    <!-- Floating Hearts Background -->
     <div id="hearts-container"></div>
 
+    <!-- Hero Section -->
     <header class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
-        <div class="reveal active">
+        <div class="reveal">
             <h1 class="font-cursive text-5xl md:text-7xl lg:text-8xl mb-4 text-glow-gold tracking-wider leading-tight">
                 21.11.2026 <br> İyi ki Doğdun Her Şeyim
             </h1>
             <p class="text-xl md:text-3xl text-gray-300 font-light italic mt-6 tracking-[0.2em] uppercase text-glow-red">
                 Seninle Geçen Her Saniye Bir Lütuf
             </p>
+            <div class="mt-12 animate-bounce">
+                <svg class="w-6 h-6 text-yellow-500 mx-auto opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
         </div>
     </header>
 
+    <!-- Extended Letter Section -->
     <section class="relative z-10 py-20 px-4 md:px-8 max-w-5xl mx-auto reveal">
         <div class="letter-container p-8 md:p-16 rounded-xl relative">
+            <!-- Decorative Quotes -->
+            <span class="absolute top-4 left-6 text-6xl text-yellow-500/30 font-serif">"</span>
+            <span class="absolute bottom-4 right-6 text-6xl text-yellow-500/30 font-serif">"</span>
+            
             <h2 class="font-cursive text-4xl md:text-6xl text-center text-yellow-500 mb-12">Meleğime Sonsuz Mesajım</h2>
-            <div class="text-lg md:text-xl leading-relaxed text-gray-200 text-justify font-light space-y-8">
+            
+            <div class="text-lg md:text-xl leading-relaxed md:leading-loose text-gray-200 text-justify font-light space-y-8">
                 <p class="drop-cap">
-                    Her şeye dönüp baktığımda aklıma o eşsiz tarihler geliyor... <strong>21 Aralık 2024 - En Uzun Gecemiz...</strong> Sabahlara kadar konuştuğumuz, birbirimizi bırakmak istemediğimiz o büyüleyici gece aşkım. İyi ki doğdun, iyi ki hayatımdasın!
+                    Her şeye dönüp baktığımda aklıma o eşsiz tarihler geliyor... <strong>21 Aralık 2024 - En Uzun Gecemiz...</strong> Sabahlara kadar konuştuğumuz, birbirimizi bırakmak istemediğimiz, uykusuzluğa inat sesini duymak için çırpındığım o büyüleyici gece aşkım. Ve sonra <strong>10 Ocak 2025 - Her şeyin başlangıcı...</strong> Aşık olduğumuzu öğrendiğimiz, ellerimizi sıkıca tuttuğumuz ve bu sonsuz yola adım attığımız o mucizevi gün. Anılarımız böyle bebeğim, dahası bile var; o kadar güzel şeyler ki yazarken, gözlerimi kapatıp düşünürken bile duygulanıyorum melek aşkım. Uzun zaman oldu sana böyle uzun uzun yazmayalı farkındayım sevgilim, ama bugünü bekledim. Sana hislerimi kelimelere dökmek, bu günü şiirlerle taçlandırmak istedim.
                 </p>
+                <p>
+                    Evet aşkım bugün benim en mutlu günüm böyle başlamak istedim çünkü çok heyecanlıyım benim meleğimin sevgilimin karımın helalimin doğum günü çiçeğimmmm doğum günümüz kutlu olsun bebeğim nice mutlu beraber dolu dolu evlilik yaşlılıklara bebeğim iyiki varsın iyiki yanımdasın iyiki hayatımdasın iyiki doğduk aşkım iyiki ya ben bugünü anlatamam çiçeğim o kadar değerli bir gün ki ne kadar yazsam bugunün değerini anlatıcak kadar yazamam aşkım Karım benim karımın doğum günü yani nasıl anlatıyım çiçeğim iyiki doğdun iyiki bana Eş oldun iyiki binlerce kez şükürler olsun aşkım bunu hatta bak 5.11.2026 saat 1:28'de aramada yazıyorum bebeğim benim ya yeriiimmmmm aşkımmmm nice güzel beraber dolu dolu çooooookkkkk güzel yıllar geçirdik geçiricez Allah'ımızın izniyle yavrum seni tanıdığım için hayatımı renklendirdiğin için ne yazsam az gelicekmiş gibi hissediyorum bebeğim ya bu tabiki doğum gunu mesajımız için ben daha hediyeye karar veremesemde hediyemizde yolda aşkıııımmmmm seni o kadar çok seviyorum ki aşkım o kadar aşığım ki ben sana bebeğim benim ya birtanemsin birtanem oldun hayatım oldun benim güzelim Eşim Karım Helalim benim.
+                </p>
+                <p>
+                    Doğum günün mesela doğduk ben yanındaydım sonra bende geldim hemen yanına doğdum :) hep yanındaydım bir an yanlız bırakmam bırakmadım bebeğimi beennn aşkımmm benim ya inşallah hediyemiii beğenmissindir çiçeğim bizim şuan beraber kutladığımız 2.doğum gunumuz ilkinde aşkım 1 ay sonra tanışmısızzz güzelimmmmmm yyyyaaaaaaa bebeğim o kadar mutluyum ki cidden yerim ya bizim doğum günümüüzzz ikimizinnnn doğummm gunuuuu aşkııımmmmmm yyyyaaaaaaaaaaaaaaa ilkkk sarıldığımız zaman ilk öptüğüm ilk tuttuğum zaman ellerini öyle bağlıyım ki sana iyiki iyiki iyiki iyiki sennnn aşkımmmmmmm benimmmm Ahuuuu gözlümmmmmm bebeğimmmm benim 3 yılll oldu biz tanışalı niceeee güzelllll tanışmaaa yılll dünümümüzeeeeeee çiçeğimmmmmm yyyyyyaaaaaaaaa melek aşkım benim hep mutlu olalım huzurlu olalım evli mutlu çocuklu olalım bebeğim benim ya seni bir meleksin zaten böyle melek gibi beyazların içinde görmek hayalim aşkım hayalim ya İnşallah herrr şeyyyy çoooookkkkk güzellllll olucakkkkk Allah'ımızınnn izniyleeeee.
+                </p>
+                <p class="text-center font-bold text-yellow-500 text-2xl mt-8">
+                    DOĞUMMMM GÜNÜMÜZZZZZZZZZ KUTLUUUUUUU OLSUNNNNNNN ÇİÇEĞİMMMMMMM İYİKİİİİİİİ DOĞDUKKKKKKK AŞKIMMMMMMMMMMM İYİKİİİİİİ İYİKİİİİİİİ İYİKİİİİİİİİİİİ İYİKİİİİİİİİİ HAYATIMIIIIII RENKLENDİRENİMMMMMMMMMMMM NEFESİMMMMMMMMMMMMM YAŞAMMMMMMM KAYNAĞIMMMMMMMMMMMM İNCİİİİİİİ GÖZLÜMMMMMMMMMMMMMMMM MERVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM BENİİİİİİİİİİİİİİİİİİİİİİİİMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM MERVEEEEEEEEEEEEEEEEEMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 21.11.2026 DOĞUM GÜNÜMÜZ 21.11.2008 HAYATIMIN BAŞLANGIÇ TARİHİ
+                </p>
+            </div>
+            
+            <div class="mt-16 text-right reveal">
+                <p class="font-cursive text-5xl md:text-6xl text-yellow-500 text-glow-gold">Efesinden Mervesine</p>
             </div>
         </div>
     </section>
 
-    <!-- Video Bölümü (Boşluksuz ve parantezsiz video.mp3 olarak ayarladık) -->
+    <!-- Timer Section (Zaman Çizelgemiz) -->
+    <section class="relative z-10 py-16 px-4 max-w-5xl mx-auto reveal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <!-- Doğum Günü -->
+            <div class="bg-black/50 border border-yellow-500/30 p-6 rounded-xl shadow-[0_0_20px_rgba(255,215,0,0.15)]">
+                <h3 class="font-cursive text-3xl text-yellow-500 mb-4">Doğum Günümüze</h3>
+                <div id="countdown-birthday" class="text-2xl md:text-3xl font-bold text-gray-200 tracking-wider font-sans">
+                    Yükleniyor...
+                </div>
+            </div>
+            <!-- En Uzun Gece -->
+            <div class="bg-black/50 border border-yellow-500/30 p-6 rounded-xl shadow-[0_0_20px_rgba(255,215,0,0.15)]">
+                <h3 class="font-cursive text-3xl text-yellow-500 mb-4">En Uzun Gecemizden Beri</h3>
+                <div id="countup-night" class="text-2xl md:text-3xl font-bold text-gray-200 tracking-wider font-sans">
+                    Yükleniyor...
+                </div>
+            </div>
+            <!-- Aşkın Başlangıcı -->
+            <div class="bg-black/50 border border-yellow-500/30 p-6 rounded-xl shadow-[0_0_20px_rgba(255,215,0,0.15)]">
+                <h3 class="font-cursive text-3xl text-yellow-500 mb-4">Aşkımız Başlayalı</h3>
+                <div id="countup-love" class="text-2xl md:text-3xl font-bold text-gray-200 tracking-wider font-sans">
+                    Yükleniyor...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Star Map Section (Yıldız Haritası) -->
+    <section class="relative z-10 py-20 px-4 md:px-8 max-w-6xl mx-auto reveal">
+        <h2 class="font-cursive text-4xl md:text-5xl text-center text-yellow-500 mb-4 text-glow-gold">10.01.2025</h2>
+        <p class="text-center text-gray-300 italic mb-10 md:text-xl">Aşık olduğumuzu öğrendiğimiz o gece gökyüzü tam olarak böyleydi...</p>
+        <div class="relative w-full h-[400px] md:h-[500px] bg-[#020005] rounded-xl border border-yellow-500/30 overflow-hidden shadow-[0_0_40px_rgba(255,215,0,0.2)]" id="star-map">
+            <!-- Yıldızlar JavaScript ile oluşturulacak -->
+        </div>
+    </section>
+
+    <!-- Poem Section -->
+    <section class="relative z-10 py-20 px-4 md:px-8 max-w-4xl mx-auto reveal">
+        <div class="p-10 md:p-16 border-t-2 border-b-2 border-yellow-500/50 bg-gradient-to-r from-transparent via-red-950/40 to-transparent text-center">
+            <h2 class="font-cursive text-5xl text-yellow-400 mb-10 text-glow-red">Söz Veriyorum</h2>
+            <p class="text-2xl md:text-4xl font-cursive leading-loose text-white text-shadow-lg">
+                Mevsimler senin varlığın ile önemsiz.<br>
+                Evimsin benim yazın ferah kışın sıcak,<br>
+                Rengarenk gökkuşağı açar gülüşünde.<br>
+                Vadediyorum bu güzel ilişkinin sonu evlilik,<br>
+                Evim sensin nerenin olduğunun bir önemi yok,<br>
+                Dizinin dibi benim Evim.
+            </p>
+        </div>
+    </section>
+
+    <!-- Reasons (Flip Cards) Section -->
+    <section class="relative z-10 py-20 px-4 md:px-8 max-w-6xl mx-auto reveal">
+        <h2 class="font-cursive text-5xl md:text-6xl text-center text-yellow-500 mb-16 text-glow-gold">Seni Sevmemin Bazı Nedenleri</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <h3 class="text-xl font-bold font-cursive tracking-wider">Gözlerin</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-lg font-light">O inci gibi, kaybolduğum Ahu gözlerin...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-xl font-bold font-cursive tracking-wider">Huzurum</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-lg font-light">Bana her sarıldığında tüm dünyanın susması ve huzur vermen...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                        <h3 class="text-xl font-bold font-cursive tracking-wider">Renklerim</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-lg font-light">Sıradan hayatımı bir anda dünyanın en renkli yerine çevirmen...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <h3 class="text-xl font-bold font-cursive tracking-wider">Meleğim</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-lg font-light">Benim biriciğim, melek sevgilim, eşim, her şeyim olman...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bucket List Section -->
+    <section class="relative z-10 py-20 px-4 md:px-8 max-w-4xl mx-auto reveal">
+        <div class="bg-black/60 border border-yellow-500/40 rounded-xl p-8 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+            <h2 class="font-cursive text-4xl md:text-5xl text-yellow-500 mb-10 text-center text-glow-gold">Gelecek Hayallerimiz</h2>
+            <div class="space-y-4">
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <span class="text-gray-200">Seni o bembeyaz gelinliğin içinde, bir melek gibi görmek</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <span class="text-gray-200">Sadece bize ait olan, sıcacık yuvamızı kurmak</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <span class="text-gray-200">Evli, mutlu ve çocuklu bir aile olmak</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <span class="text-gray-200">Ellerimiz hiç ayrılmadan, birlikte huzurla yaşlanmak</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scratch Card Section (Kazı Kazan) -->
+    <section class="relative z-10 py-20 px-4 md:px-8 max-w-4xl mx-auto reveal">
+        <h2 class="font-cursive text-4xl md:text-5xl text-center text-yellow-500 mb-6 text-glow-gold">Senin İçin Gizli Bir Sürpriz</h2>
+        <p class="text-center text-gray-300 italic mb-10 text-lg">Kuponu görmek için parmağınla veya farenle kazı...</p>
+        <div class="relative w-full max-w-md mx-auto h-[250px] rounded-xl overflow-hidden shadow-[0_0_30px_rgba(255,215,0,0.4)] border border-yellow-500/50" id="scratch-container">
+            <div class="absolute inset-0 flex items-center justify-center bg-red-950 p-6 text-center">
+                <p class="font-cursive text-3xl md:text-4xl text-yellow-400 text-glow-gold leading-tight">Sınırsız Sarılma, Öpücük ve Sonsuz Aşk Kuponu kazandın bebeğim! ❤️</p>
+            </div>
+            <canvas id="scratchCanvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
+        </div>
+    </section>
+
+    <!-- Video Section -->
     <section class="relative z-10 py-20 px-4 md:px-8 max-w-4xl mx-auto reveal">
         <h2 class="font-cursive text-5xl md:text-6xl text-center text-yellow-500 mb-12 text-glow-gold">Bizim Filmimiz</h2>
         <div class="relative bg-black p-2 md:p-4 rounded-xl gold-border shadow-[0_0_40px_rgba(255,215,0,0.2)]">
-            <video controls class="w-full rounded-lg outline-none" preload="metadata">
-                <source src="video.mp4" type="video/mp4">
+            <video controls class="w-full rounded-lg outline-none">
+                <source src="0830 (1).mp4" type="video/mp4">
                 Tarayıcınız bu videoyu desteklemiyor.
             </video>
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="relative z-10 py-24 px-6 max-w-6xl mx-auto">
+        <h2 class="font-cursive text-5xl md:text-7xl text-center text-yellow-500 mb-20 reveal">En Güzel Anlarımız</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center justify-items-center">
+            
+            <!-- Polaroid 1 -->
+            <div class="polaroid transform -rotate-3 w-full max-w-md reveal">
+                <div class="border-4 border-double border-yellow-500/30 p-2">
+                    <img src="WhatsApp Image 2026-08-30 at 16.38.13.jpeg" alt="Sarıldığımız An" onerror="this.src='https://placehold.co/500x600/2a0000/ffd700?text=Sonsuz+Ask'">
+                </div>
+                <p class="font-cursive text-gray-800 text-center text-3xl mt-6 font-bold">Huzurum...</p>
+            </div>
+
+            <!-- Polaroid 2 -->
+            <div class="polaroid transform rotate-2 w-full max-w-md reveal" style="transition-delay: 0.3s;">
+                <div class="border-4 border-double border-yellow-500/30 p-2">
+                    <img src="WhatsApp Image 2026-08-30 at 16.38.15.jpeg" alt="Gelinlikli An" onerror="this.src='https://placehold.co/500x600/2a0000/ffd700?text=Sonsuza+Dek'">
+                </div>
+                <p class="font-cursive text-gray-800 text-center text-3xl mt-6 font-bold">Meleğim...</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- İnteraktif Soru (Kaçan Buton) -->
+    <section class="relative z-10 py-20 px-4 max-w-4xl mx-auto reveal">
+        <div class="love-question-container p-10 bg-black/60 border border-yellow-500/40 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+            <h2 class="font-cursive text-4xl md:text-5xl text-yellow-500 mb-12 text-glow-gold">Beni dünyadaki herkesten çok seviyorsun, değil mi?</h2>
+            
+            <div class="relative w-full h-40 flex justify-center items-center gap-10" id="btn-container">
+                <button class="btn-yes" id="btnYes">Eveeet! ❤️</button>
+                <button class="btn-no" id="btnNo">Hayır</button>
+            </div>
+            
+            <div id="yes-message" class="hidden mt-8">
+                <p class="font-cursive text-4xl text-red-400 text-glow-red">Biliyordum! Ben de seni dünyadaki her şeyden çok seviyorum meleğim! 💕</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sürpriz Hediye Kutusu -->
+    <section class="relative z-10 py-24 px-4 max-w-4xl mx-auto reveal">
+        <h2 class="font-cursive text-5xl md:text-6xl text-center text-yellow-500 mb-16 text-glow-gold">Sana Küçücük Bir Sürprizim Var...</h2>
+        <div class="flex flex-col items-center justify-center min-h-[300px]">
+            <div id="giftBox" class="gift-box" title="Açmak için bana tıkla!">
+                🎁
+            </div>
+            <div id="giftReveal" class="gift-reveal bg-black/70 border border-yellow-500/50 p-8 rounded-2xl shadow-[0_0_40px_rgba(255,215,0,0.3)] backdrop-blur-md">
+                <p class="font-cursive text-5xl text-yellow-400 mb-6 text-glow-gold">Gerçek hediyen sana doğru geliyor...</p>
+                <p class="text-2xl text-gray-200 font-light">Ama şimdilik bu dijital gülü kabul et bebeğim 🌹<br><br>Seni çok seviyorum Mervem!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Film Jeneriği (Kapanış) -->
+    <section class="relative z-10 py-20 reveal">
+        <h2 class="font-cursive text-5xl text-center text-red-500 mb-12 text-glow-red">Bir Hayat Boyu Beraber...</h2>
+        <div class="credits-container">
+            <div class="credits-content">
+                <div class="credit-role">Başroller</div>
+                <div class="credit-name">Efe & Merve</div>
+                
+                <div class="credit-role">Senarist & Yönetmen</div>
+                <div class="credit-name">Kader</div>
+                
+                <div class="credit-role">Yapımcı</div>
+                <div class="credit-name">Sonsuz Aşkımız</div>
+
+                <div class="credit-role">Müzik</div>
+                <div class="credit-name">Bizim Şarkımız</div>
+                
+                <div class="credit-role">Gelecek Bölüm</div>
+                <div class="credit-name" style="font-size: 4rem; color: white;">Sonsuzluk...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Space -->
+    <footer class="h-20"></footer>
+
+    <!-- Scripts -->
     <script>
-        // Kalp Animasyonu
+        // Floating Hearts Logic
         function createHeart() {
             const container = document.getElementById('hearts-container');
-            if(!container) return;
             const heart = document.createElement('div');
             heart.classList.add('heart');
+            
+            // Randomize heart content (different emoji styles)
             const hearts = ['❤', '💖', '✨', '💕', '♥'];
             heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            // Randomize position, size, and animation duration
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            container.appendChild(heart);
-            setTimeout(() => heart.remove(), 20000);
-        }
-        setInterval(createHeart, 600);
+            const duration = Math.random() * 10 + 10; // Between 10s and 20s
+            heart.style.animationDuration = duration + 's';
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px'; // 15px to 30px
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
 
-        // Scroll Reveal
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            container.appendChild(heart);
+
+            // Remove heart after animation ends to clean up DOM
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Generate hearts periodically
+        setInterval(createHeart, 500);
+
+        // Scroll Reveal Animation Logic
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100; // Trigger point
+
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
                     el.classList.add('active');
                 }
             });
+        };
+
+        // Initial check and scroll event listener
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            // Pre-fill some hearts so the screen isn't empty at first
+            for(let i=0; i<15; i++) {
+                setTimeout(createHeart, Math.random() * 2000);
+            }
         });
 
-        // Kilit Ekranı Kaldırma ve Güvenli Müzik Başlatma
+        // Timer Logic
+        const birthdayDate = new Date("Nov 21, 2026 00:00:00").getTime();
+        const longestNightDate = new Date("Dec 21, 2024 00:00:00").getTime();
+        const loveDate = new Date("Jan 10, 2025 00:00:00").getTime();
+
+        function updateTimers() {
+            const now = new Date().getTime();
+
+            // 1. Doğum Günü Geri Sayım
+            const diffBday = birthdayDate - now;
+            const elBday = document.getElementById("countdown-birthday");
+            if (elBday) {
+                if (diffBday > 0) {
+                    const d = Math.floor(diffBday / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((diffBday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((diffBday % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((diffBday % (1000 * 60)) / 1000);
+                    elBday.innerHTML = `${d}g ${h}s<br>${m}d ${s}sn`;
+                } else {
+                    elBday.innerHTML = "Doğum Günümüz Geldi!";
+                }
+            }
+
+            // 2. En Uzun Gece İleri Sayım
+            const diffNight = now - longestNightDate;
+            const elNight = document.getElementById("countup-night");
+            if (elNight && diffNight > 0) {
+                const dN = Math.floor(diffNight / (1000 * 60 * 60 * 24));
+                const hN = Math.floor((diffNight % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mN = Math.floor((diffNight % (1000 * 60 * 60)) / (1000 * 60));
+                const sN = Math.floor((diffNight % (1000 * 60)) / 1000);
+                elNight.innerHTML = `${dN}g ${hN}s<br>${mN}d ${sN}sn`;
+            }
+
+            // 3. Aşkın Başlangıcı İleri Sayım
+            const diffLove = now - loveDate;
+            const elLove = document.getElementById("countup-love");
+            if (elLove && diffLove > 0) {
+                const dL = Math.floor(diffLove / (1000 * 60 * 60 * 24));
+                const hL = Math.floor((diffLove % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mL = Math.floor((diffLove % (1000 * 60 * 60)) / (1000 * 60));
+                const sL = Math.floor((diffLove % (1000 * 60)) / 1000);
+                elLove.innerHTML = `${dL}g ${hL}s<br>${mL}d ${sL}sn`;
+            }
+        }
+
+        setInterval(updateTimers, 1000);
+        updateTimers(); // Start immediately
+
+        // Audio Player Logic
+        const musicBtn = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            } else {
+                bgMusic.play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- YENİ EKLENEN JS MANTIKLARI ---
+
+        // Kaçan Buton (Hayır) ve Evet Butonu Mantığı
+        const btnNo = document.getElementById('btnNo');
+        const btnYes = document.getElementById('btnYes');
+        const yesMessage = document.getElementById('yes-message');
+        const btnContainer = document.getElementById('btn-container');
+
+        const moveNoButton = () => {
+            const containerRect = btnContainer.getBoundingClientRect();
+            const btnRect = btnNo.getBoundingClientRect();
+            
+            // Container sınırları içinde kalmasını sağla
+            const maxLeft = containerRect.width - btnRect.width - 20; 
+            const maxTop = containerRect.height - btnRect.height - 20;
+            
+            // Yeni pozisyon hesapla
+            let newLeft = Math.random() * maxLeft;
+            let newTop = Math.random() * maxTop;
+            
+            // Eğer yeni pozisyon Evet butonuna çok yakınsa biraz kaydır (üst üste binmemesi için)
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = Math.max(10, newLeft) + 'px';
+            btnNo.style.top = Math.max(10, newTop) + 'px';
+        };
+
+        // Fare ile üzerine gelince veya mobilde dokunmaya çalışınca kaçsın
+        btnNo.addEventListener('mouseover', moveNoButton);
+        btnNo.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Tıklanmayı engelle
+            moveNoButton();
+        });
+
+        // Evet butonuna tıklayınca kalpler patlasın
+        btnYes.addEventListener('click', () => {
+            yesMessage.classList.remove('hidden');
+            btnContainer.style.display = 'none'; // Butonları gizle
+            
+            // Kalp patlaması efekti
+            for(let i=0; i<40; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        });
+
+        // Hediye Kutusu Mantığı
+        const giftBox = document.getElementById('giftBox');
+        const giftReveal = document.getElementById('giftReveal');
+
+        giftBox.addEventListener('click', () => {
+            giftBox.style.display = 'none';
+            giftReveal.classList.add('show');
+            
+            // Kutu açılınca ekstra kalpler yağsın
+            for(let i=0; i<20; i++) {
+                setTimeout(createHeart, Math.random() * 1500);
+            }
+        });
+
+        // --- GİRİŞ EKRANI (LOCK SCREEN) MANTIĞI ---
         const lockScreen = document.getElementById('lock-screen');
         const unlockBtn = document.getElementById('unlockBtn');
-        const bgMusic = document.getElementById('bgMusic');
+        const lockPassword = document.getElementById('lockPassword');
+        const lockError = document.getElementById('lockError');
 
-        if(unlockBtn) {
-            unlockBtn.addEventListener('click', () => {
+        function unlockAttempt() {
+            // Şifreyi temizle: boşlukları, noktaları, tire ve eğik çizgileri kaldır
+            const rawVal = lockPassword.value.trim();
+            const val = rawVal.replace(/[\s\.\/\-]/g, ''); 
+            
+            // Kabul edilenler: 21122024 (21.12.2024) veya 211224 (21.12.24)
+            if(val === '21122024' || val === '211224') {
+                lockError.classList.add('hidden');
                 lockScreen.style.opacity = '0';
+                lockScreen.style.pointerEvents = 'none'; // Tıklamaları anında devre dışı bırak
+                
                 setTimeout(() => {
                     lockScreen.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                    document.body.style.overflow = 'auto'; // Sitenin kaydırılmasına izin ver
+                    
+                    // Müziği Otomatik Başlatmayı Dene
                     if(bgMusic) {
-                        bgMusic.play().catch(e => console.log("Müzik çalınamadı: ", e));
+                        bgMusic.play().then(() => {
+                            if(playIcon) playIcon.classList.add('hidden');
+                            if(pauseIcon) pauseIcon.classList.remove('hidden');
+                            isPlaying = true;
+                        }).catch(e => console.log("Müzik için ek kullanıcı etkileşimi gerekiyor."));
                     }
-                }, 500);
+                    
+                }, 800);
+            } else {
+                lockError.classList.remove('hidden');
+                lockPassword.classList.add('border-red-500', 'bg-red-950/50');
+                setTimeout(() => {
+                    lockPassword.classList.remove('border-red-500', 'bg-red-950/50');
+                }, 1500);
+            }
+        }
+
+        if (unlockBtn) {
+            unlockBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Sayfa yenilenmesini engelle
+                unlockAttempt();
+            });
+        }
+        
+        if (lockPassword) {
+            lockPassword.addEventListener('keypress', (e) => {
+                if(e.key === 'Enter') {
+                    e.preventDefault(); // Enter'ın formu göndermesini engelle
+                    unlockAttempt();
+                }
             });
         }
 
-        // Müzik Kontrol Butonu
-        const musicBtn = document.getElementById('musicToggle');
-        let isPlaying = false;
-        if(musicBtn && bgMusic) {
-            musicBtn.addEventListener('click', () => {
-                if(isPlaying) {
-                    bgMusic.pause();
-                    musicBtn.innerText = "🎵";
-                } else {
-                    bgMusic.play();
-                    musicBtn.innerText = "⏸";
-                }
-                isPlaying = !isPlaying;
-            });
+
+        // --- YILDIZ HARİTASI OLUŞTURUCU ---
+        const starMap = document.getElementById('star-map');
+        if(starMap) {
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.classList.add('absolute', 'bg-white', 'rounded-full');
+                
+                const size = Math.random() * 2 + 1; // 1 to 3px
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const opacity = Math.random() * 0.7 + 0.3;
+                const animationDuration = Math.random() * 4 + 2; 
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.opacity = opacity;
+                star.style.animation = `twinkle ${animationDuration}s infinite alternate`;
+                
+                starMap.appendChild(star);
+            }
         }
+
+        // --- KAZI KAZAN (SCRATCH CARD) MANTIĞI ---
+        const scratchCanvas = document.getElementById('scratchCanvas');
+        if(scratchCanvas) {
+            const ctx = scratchCanvas.getContext('2d');
+            let isScratching = false;
+
+            function initCanvas() {
+                scratchCanvas.width = scratchCanvas.offsetWidth;
+                scratchCanvas.height = scratchCanvas.offsetHeight;
+                
+                // Üst kaplama (Altın rengi/Gri arası)
+                ctx.fillStyle = '#6b5a39'; 
+                ctx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+                
+                // Kaplama üzerine yazı
+                ctx.fillStyle = '#fdfbf7';
+                ctx.font = 'bold 20px "Playfair Display"';
+                ctx.textAlign = 'center';
+                ctx.fillText('Kazımak için sürükle...', scratchCanvas.width/2, scratchCanvas.height/2);
+
+                // Kazıma fırçası ayarları
+                ctx.lineJoin = "round";
+                ctx.lineCap = "round";
+                ctx.lineWidth = 45;
+                ctx.globalCompositeOperation = "destination-out"; // Çizilen yerleri siler
+            }
+            
+            setTimeout(initCanvas, 500);
+            window.addEventListener('resize', initCanvas);
+
+            function scratch(e) {
+                if (!isScratching) return;
+                e.preventDefault();
+                const rect = scratchCanvas.getBoundingClientRect();
+                const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+                
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
+                
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+
+            // Fare (Mouse) Eventleri
+            scratchCanvas.addEventListener('mousedown', (e) => {
+                isScratching = true;
+                const rect = scratchCanvas.getBoundingClientRect();
+                ctx.beginPath();
+                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            });
+            scratchCanvas.addEventListener('mousemove', scratch);
+            scratchCanvas.addEventListener('mouseup', () => isScratching = false);
+            scratchCanvas.addEventListener('mouseleave', () => isScratching = false);
+            
+            // Dokunmatik (Touch) Eventleri
+            scratchCanvas.addEventListener('touchstart', (e) => {
+                isScratching = true;
+                const rect = scratchCanvas.getBoundingClientRect();
+                ctx.beginPath();
+                ctx.moveTo(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+            });
+            scratchCanvas.addEventListener('touchmove', scratch);
+            scratchCanvas.addEventListener('touchend', () => isScratching = false);
+        }
+
     </script>
 </body>
 </html>
