@@ -6,13 +6,12 @@
     <title>İyi ki Doğdun Mervem</title>
     <!-- Tailwind CSS for layout -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Elegant Serif and Cursive Typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Theme */
         body {
             background: radial-gradient(circle at center, #3a0005 0%, #0a0000 100%);
             color: #fdfbf7;
@@ -21,382 +20,189 @@
             margin: 0;
             padding: 0;
         }
-
-        /* Custom Typography */
-        .font-cursive {
-            font-family: 'Great Vibes', cursive;
-        }
-
-        /* Gold Glowing Effects */
+        .font-cursive { font-family: 'Great Vibes', cursive; }
         .text-glow-gold {
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 
-                         0 0 20px rgba(218, 165, 32, 0.4), 
-                         0 0 30px rgba(255, 215, 0, 0.2);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(218, 165, 32, 0.4);
             color: #ffd700;
         }
-        .text-glow-red {
-            text-shadow: 0 0 15px rgba(255, 0, 50, 0.8), 
-                         0 0 30px rgba(200, 0, 0, 0.5);
-        }
-        
-        .gold-border {
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 0 15px rgba(218, 165, 32, 0.2);
-        }
+        .text-glow-red { text-shadow: 0 0 15px rgba(255, 0, 50, 0.8); }
+        .gold-border { border: 1px solid rgba(255, 215, 0, 0.3); box-shadow: 0 0 15px rgba(218, 165, 32, 0.2); }
 
-        /* Floating Hearts Animation */
         #hearts-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
-
         .heart {
-            position: absolute;
-            bottom: -10vh;
-            color: rgba(255, 50, 50, 0.6);
-            font-size: 24px;
+            position: absolute; bottom: -10vh;
+            color: rgba(255, 50, 50, 0.6); font-size: 24px;
             animation: floatUp 10s linear infinite;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
-
         @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.5) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-110vh) scale(1.2) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
-        /* Scroll Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Polaroid Gallery */
         .polaroid {
-            background: #fff;
-            padding: 10px 10px 40px 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            position: relative;
-            z-index: 10;
+            background: #fff; padding: 10px 10px 40px 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; z-index: 10;
         }
-        .polaroid img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border: 1px solid #ddd;
-        }
-        .polaroid:hover {
-            transform: scale(1.05) rotate(0deg) !important;
-            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
-            z-index: 20;
-        }
+        .polaroid img { width: 100%; height: auto; object-fit: cover; border: 1px solid #ddd; }
 
-        /* Letter Styling */
         .letter-container {
-            background: rgba(20, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
+            background: rgba(20, 0, 0, 0.6); backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 215, 0, 0.4);
             box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,0,0,0.1);
         }
         .drop-cap:first-letter {
-            float: left;
-            font-size: 4rem;
-            line-height: 1;
-            padding-right: 8px;
-            color: #ffd700;
-            font-family: 'Great Vibes', cursive;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            float: left; font-size: 4rem; line-height: 1; padding-right: 8px;
+            color: #ffd700; font-family: 'Great Vibes', cursive;
         }
 
-        /* Music Button */
         .music-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 50;
-            background: rgba(20, 0, 0, 0.8);
-            border: 1px solid #ffd700;
-            color: #ffd700;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            position: fixed; bottom: 30px; right: 30px; z-index: 50;
+            background: rgba(20, 0, 0, 0.8); border: 1px solid #ffd700;
+            color: #ffd700; border-radius: 50%; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-        .music-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
         }
 
-        /* Flip Cards */
-        .flip-card {
-            background-color: transparent;
-            width: 100%;
-            height: 180px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
+        .flip-card { background-color: transparent; width: 100%; height: 180px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            padding: 20px;
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border-radius: 15px; padding: 20px;
         }
-        .flip-card-front {
-            background: rgba(20, 0, 0, 0.6);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #ffd700;
-        }
-        .flip-card-back {
-            background: rgba(40, 0, 0, 0.8);
-            border: 1px solid #ffd700;
-            color: #fdfbf7;
-            transform: rotateY(180deg);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2) inset;
-        }
+        .flip-card-front { background: rgba(20, 0, 0, 0.6); border: 1px solid rgba(255, 215, 0, 0.3); color: #ffd700; }
+        .flip-card-back { background: rgba(40, 0, 0, 0.8); border: 1px solid #ffd700; color: #fdfbf7; transform: rotateY(180deg); }
 
-        /* Checklist */
         .check-item {
-            display: flex;
-            align-items: center;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            padding: 1rem 1.5rem;
-            background: rgba(0,0,0,0.4);
-            border-radius: 10px;
-            border-left: 4px solid #ffd700;
-            transition: transform 0.3s ease;
+            display: flex; align-items: center; font-size: 1.25rem; margin-bottom: 1rem;
+            padding: 1rem 1.5rem; background: rgba(0,0,0,0.4); border-radius: 10px; border-left: 4px solid #ffd700;
         }
-        .check-item:hover {
-            transform: translateX(10px);
-            background: rgba(30, 0, 0, 0.6);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
-        }
-        .check-icon {
-            color: #ffd700;
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
+        .gift-box { cursor: pointer; font-size: 6rem; text-align: center; user-select: none; }
+        .gift-reveal { display: none; opacity: 0; }
+        .gift-reveal.show { display: block; opacity: 1; animation: fadeIn 1s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Gift Box */
-        .gift-box { 
-            cursor: pointer; 
-            animation: shake 2s infinite; 
-            font-size: 6rem; 
-            text-align: center; 
-            transition: transform 0.3s; 
-            user-select: none;
-        }
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -2px) rotate(-1deg); }
-            20% { transform: translate(-3px, 0px) rotate(1deg); }
-            30% { transform: translate(3px, 2px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 2px) rotate(-1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            70% { transform: translate(3px, 1px) rotate(-1deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(1px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 10px #fff; }
-        }
-        
-        .gift-reveal { 
-            display: none;
-            opacity: 0;
-        }
-        .gift-reveal.show { 
-            display: block; 
-            opacity: 1; 
-            animation: fadeIn 1s forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Running Button Area */
-        .love-question-container { 
-            text-align: center; 
-            position: relative; 
-            min-height: 250px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
-        }
-        .btn-yes, .btn-no { 
-            padding: 12px 35px; 
-            font-size: 1.5rem; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            border: none; 
-            outline: none; 
-            font-family: 'Playfair Display', serif; 
-            font-weight: bold; 
-            z-index: 20;
-        }
-        .btn-yes { 
-            background-color: #ffd700; 
-            color: #3a0005; 
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); 
-            transition: transform 0.2s, box-shadow 0.2s; 
-        }
-        .btn-yes:hover { 
-            transform: scale(1.1); 
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-        }
-        .btn-no { 
-            background-color: #333; 
-            color: #ccc; 
-            position: absolute; 
-            transition: top 0.2s ease, left 0.2s ease; 
-        }
-
-        /* Movie Credits */
-        .credits-container { 
-            position: relative; 
-            overflow: hidden; 
-            height: 350px; 
-            width: 100%; 
-            background: linear-gradient(to bottom, transparent, #0a0000, transparent); 
-            border-top: 1px solid rgba(255,215,0,0.3); 
-            border-bottom: 1px solid rgba(255,215,0,0.3); 
-            display: flex; 
-            justify-content: center; 
-        }
-        .credits-content { 
-            position: absolute; 
-            bottom: -100%; 
-            text-align: center; 
-            width: 100%; 
-            animation: scrollCredits 20s linear infinite; 
-        }
-        @keyframes scrollCredits {
-            0% { bottom: -120%; }
-            100% { bottom: 120%; }
-        }
-        .credit-role { 
-            font-size: 1.2rem; 
-            color: #aaa; 
-            margin-bottom: 5px; 
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-        .credit-name { 
-            font-size: 3rem; 
-            color: #ffd700; 
-            font-family: 'Great Vibes', cursive; 
-            margin-bottom: 40px; 
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
+        .love-question-container { text-align: center; position: relative; min-height: 250px; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
+        .btn-yes, .btn-no { padding: 12px 35px; font-size: 1.5rem; border-radius: 50px; cursor: pointer; border: none; font-family: 'Playfair Display', serif; font-weight: bold; z-index: 20; }
+        .btn-yes { background-color: #ffd700; color: #3a0005; }
+        .btn-no { background-color: #333; color: #ccc; position: absolute; }
     </style>
 </head>
-<body class="relative min-h-screen antialiased selection:bg-red-900 selection:text-gold-200" style="overflow: hidden;">
+<body class="relative min-h-screen antialiased">
 
-    <!-- Kilit Ekranı (Giriş) -->
-    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#050000] flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
+    <!-- Kilit Ekranı (Geçici Olarak Sadeleştirildi) -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#050000] flex flex-col items-center justify-center px-4">
         <div class="text-center max-w-md w-full">
-            <svg class="w-16 h-16 mx-auto text-yellow-500 mb-6 drop-shadow-[0_0_15px_rgba(255,215,0,0.6)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
             <h2 class="font-cursive text-4xl md:text-5xl text-yellow-500 mb-4 text-glow-gold">Kalbimin sahibine özel...</h2>
-            <p class="text-gray-300 mb-8 font-light italic">Kilitli kapıyı açmak için o tarihi girmelisin.</p>
-            <input type="text" id="lockPassword" placeholder="En uzun gecemizin tarihi (GG.AA.YYYY)" class="w-full bg-black/50 border border-yellow-500/50 rounded-full px-6 py-3 text-center text-white focus:outline-none focus:border-yellow-400 mb-4 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
-            <button id="unlockBtn" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-bold w-full hover:bg-yellow-400 hover:shadow-[0_0_20px_rgba(255,215,0,0.6)] transition-all">Kilidi Aç</button>
-            <p id="lockError" class="text-red-500 mt-4 hidden text-sm">Yanlış tarih sevgilim, tekrar dene...</p>
+            <p class="text-gray-300 mb-8 font-light italic">Giriş yapmak için butona tıkla sevgilim.</p>
+            <button id="unlockBtn" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-bold w-full hover:bg-yellow-400 transition-all">Siteye Giriş Yap ❤️</button>
         </div>
     </div>
 
-    <!-- Audio Element & Floating Button -->
+    <!-- Audio Element -->
     <audio id="bgMusic" loop>
         <source src="sarkimiz.mp3" type="audio/mpeg">
     </audio>
-    <button id="musicToggle" class="music-btn" title="Müziği Başlat/Durdur">
-        <svg id="playIcon" class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-        </svg>
-        <svg id="pauseIcon" class="w-8 h-8 hidden" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-        </svg>
-    </button>
+    <button id="musicToggle" class="music-btn" title="Müziği Başlat/Durdur">🎵</button>
 
     <!-- Floating Hearts Background -->
     <div id="hearts-container"></div>
 
     <!-- Hero Section -->
     <header class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
-        <div class="reveal">
+        <div class="reveal active">
             <h1 class="font-cursive text-5xl md:text-7xl lg:text-8xl mb-4 text-glow-gold tracking-wider leading-tight">
                 21.11.2026 <br> İyi ki Doğdun Her Şeyim
             </h1>
             <p class="text-xl md:text-3xl text-gray-300 font-light italic mt-6 tracking-[0.2em] uppercase text-glow-red">
                 Seninle Geçen Her Saniye Bir Lütuf
             </p>
-            <div class="mt-12 animate-bounce">
-                <svg class="w-6 h-6 text-yellow-500 mx-auto opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </div>
         </div>
     </header>
 
     <!-- Extended Letter Section -->
     <section class="relative z-10 py-20 px-4 md:px-8 max-w-5xl mx-auto reveal">
         <div class="letter-container p-8 md:p-16 rounded-xl relative">
-            <span class="absolute top-4 left-6 text-6xl text-yellow-500/30 font-serif">"</span>
-            <span class="absolute bottom-4 right-6 text-6xl text-yellow-500/30 font-serif">"</span>
-            
             <h2 class="font-cursive text-4xl md:text-6xl text-center text-yellow-500 mb-12">Meleğime Sonsuz Mesajım</h2>
-            
-            <div class="text-lg md:text-xl leading-relaxed md:leading-loose text-gray-200 text-justify font-light space-y-8">
+            <div class="text-lg md:text-xl leading-relaxed text-gray-200 text-justify font-light space-y-8">
                 <p class="drop-cap">
-                    Her şeye dönüp baktığımda aklıma o eşsiz tarihler geliyor... <strong>21 Aralık 2024 - En Uzun Gecemiz...</strong> Sabahlara kadar konuştuğumuz, birbirimizi bırakmak istemediğimiz, uykusuzluğa inat sesini duymak için çırp
+                    Her şeye dönüp baktığımda aklıma o eşsiz tarihler geliyor... <strong>21 Aralık 2024 - En Uzun Gecemiz...</strong> Sabahlara kadar konuştuğumuz, birbirimizi bırakmak istemediğimiz, uykusuzluğa inat sesini duymak için çırpındığım o büyüleyici gece aşkım.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        // Floating Hearts
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            if(!container) return;
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const hearts = ['❤', '💖', '✨', '💕', '♥'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 20000);
+        }
+        setInterval(createHeart, 600);
+
+        // Scroll Reveal
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Unlock Logic (Mobilde hatasız açılış için)
+        const lockScreen = document.getElementById('lock-screen');
+        const unlockBtn = document.getElementById('unlockBtn');
+        const bgMusic = document.getElementById('bgMusic');
+
+        if(unlockBtn) {
+            unlockBtn.addEventListener('click', () => {
+                lockScreen.style.opacity = '0';
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    // Müzik kullanıcı tıkladığı için mobilde güvenle çalabilir
+                    if(bgMusic) {
+                        bgMusic.play().catch(e => console.log("Müzik çalınamadı."));
+                    }
+                }, 500);
+            });
+        }
+
+        // Music Toggle Button
+        const musicBtn = document.getElementById('musicToggle');
+        let isPlaying = false;
+        if(musicBtn && bgMusic) {
+            musicBtn.addEventListener('click', () => {
+                if(isPlaying) {
+                    bgMusic.pause();
+                    musicBtn.innerText = "🎵";
+                } else {
+                    bgMusic.play();
+                    musicBtn.innerText = "⏸";
+                }
+                isPlaying = !isPlaying;
+            });
+        }
+    </script>
+</body>
+</html>
