@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyi ki Doğdun Mervem</title>
-    <!-- Tailwind CSS for layout -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -48,12 +46,6 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .polaroid {
-            background: #fff; padding: 10px 10px 40px 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; z-index: 10;
-        }
-        .polaroid img { width: 100%; height: auto; object-fit: cover; border: 1px solid #ddd; }
-
         .letter-container {
             background: rgba(20, 0, 0, 0.6); backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 215, 0, 0.4);
@@ -71,55 +63,27 @@
             display: flex; align-items: center; justify-content: center; cursor: pointer;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
         }
-
-        .flip-card { background-color: transparent; width: 100%; height: 180px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back {
-            position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            border-radius: 15px; padding: 20px;
-        }
-        .flip-card-front { background: rgba(20, 0, 0, 0.6); border: 1px solid rgba(255, 215, 0, 0.3); color: #ffd700; }
-        .flip-card-back { background: rgba(40, 0, 0, 0.8); border: 1px solid #ffd700; color: #fdfbf7; transform: rotateY(180deg); }
-
-        .check-item {
-            display: flex; align-items: center; font-size: 1.25rem; margin-bottom: 1rem;
-            padding: 1rem 1.5rem; background: rgba(0,0,0,0.4); border-radius: 10px; border-left: 4px solid #ffd700;
-        }
-        .gift-box { cursor: pointer; font-size: 6rem; text-align: center; user-select: none; }
-        .gift-reveal { display: none; opacity: 0; }
-        .gift-reveal.show { display: block; opacity: 1; animation: fadeIn 1s forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .love-question-container { text-align: center; position: relative; min-height: 250px; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
-        .btn-yes, .btn-no { padding: 12px 35px; font-size: 1.5rem; border-radius: 50px; cursor: pointer; border: none; font-family: 'Playfair Display', serif; font-weight: bold; z-index: 20; }
-        .btn-yes { background-color: #ffd700; color: #3a0005; }
-        .btn-no { background-color: #333; color: #ccc; position: absolute; }
     </style>
 </head>
 <body class="relative min-h-screen antialiased">
 
-    <!-- Kilit Ekranı (Geçici Olarak Sadeleştirildi) -->
+    <!-- Giriş Ekranı -->
     <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#050000] flex flex-col items-center justify-center px-4">
         <div class="text-center max-w-md w-full">
             <h2 class="font-cursive text-4xl md:text-5xl text-yellow-500 mb-4 text-glow-gold">Kalbimin sahibine özel...</h2>
-            <p class="text-gray-300 mb-8 font-light italic">Giriş yapmak için butona tıkla sevgilim.</p>
+            <p class="text-gray-300 mb-8 font-light italic">Sürprizi görmek için butona tıkla sevgilim.</p>
             <button id="unlockBtn" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-bold w-full hover:bg-yellow-400 transition-all">Siteye Giriş Yap ❤️</button>
         </div>
     </div>
 
-    <!-- Audio Element -->
-    <audio id="bgMusic" loop>
+    <!-- Audio Element (Dosya adını sarkimiz.mp3 yaptığından emin ol) -->
+    <audio id="bgMusic" loop preload="auto">
         <source src="sarkimiz.mp3" type="audio/mpeg">
     </audio>
     <button id="musicToggle" class="music-btn" title="Müziği Başlat/Durdur">🎵</button>
 
-    <!-- Floating Hearts Background -->
     <div id="hearts-container"></div>
 
-    <!-- Hero Section -->
     <header class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
         <div class="reveal active">
             <h1 class="font-cursive text-5xl md:text-7xl lg:text-8xl mb-4 text-glow-gold tracking-wider leading-tight">
@@ -131,21 +95,30 @@
         </div>
     </header>
 
-    <!-- Extended Letter Section -->
     <section class="relative z-10 py-20 px-4 md:px-8 max-w-5xl mx-auto reveal">
         <div class="letter-container p-8 md:p-16 rounded-xl relative">
             <h2 class="font-cursive text-4xl md:text-6xl text-center text-yellow-500 mb-12">Meleğime Sonsuz Mesajım</h2>
             <div class="text-lg md:text-xl leading-relaxed text-gray-200 text-justify font-light space-y-8">
                 <p class="drop-cap">
-                    Her şeye dönüp baktığımda aklıma o eşsiz tarihler geliyor... <strong>21 Aralık 2024 - En Uzun Gecemiz...</strong> Sabahlara kadar konuştuğumuz, birbirimizi bırakmak istemediğimiz, uykusuzluğa inat sesini duymak için çırpındığım o büyüleyici gece aşkım.
+                    Her şeye dönüp baktığımda aklıma o eşsiz tarihler geliyor... <strong>21 Aralık 2024 - En Uzun Gecemiz...</strong> Sabahlara kadar konuştuğumuz, birbirimizi bırakmak istemediğimiz o büyüleyici gece aşkım. İyi ki doğdun, iyi ki hayatımdasın!
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Scripts -->
+    <!-- Video Bölümü (Boşluksuz ve parantezsiz video.mp3 olarak ayarladık) -->
+    <section class="relative z-10 py-20 px-4 md:px-8 max-w-4xl mx-auto reveal">
+        <h2 class="font-cursive text-5xl md:text-6xl text-center text-yellow-500 mb-12 text-glow-gold">Bizim Filmimiz</h2>
+        <div class="relative bg-black p-2 md:p-4 rounded-xl gold-border shadow-[0_0_40px_rgba(255,215,0,0.2)]">
+            <video controls class="w-full rounded-lg outline-none" preload="metadata">
+                <source src="video.mp4" type="video/mp4">
+                Tarayıcınız bu videoyu desteklemiyor.
+            </video>
+        </div>
+    </section>
+
     <script>
-        // Floating Hearts
+        // Kalp Animasyonu
         function createHeart() {
             const container = document.getElementById('hearts-container');
             if(!container) return;
@@ -169,7 +142,7 @@
             });
         });
 
-        // Unlock Logic (Mobilde hatasız açılış için)
+        // Kilit Ekranı Kaldırma ve Güvenli Müzik Başlatma
         const lockScreen = document.getElementById('lock-screen');
         const unlockBtn = document.getElementById('unlockBtn');
         const bgMusic = document.getElementById('bgMusic');
@@ -180,15 +153,14 @@
                 setTimeout(() => {
                     lockScreen.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                    // Müzik kullanıcı tıkladığı için mobilde güvenle çalabilir
                     if(bgMusic) {
-                        bgMusic.play().catch(e => console.log("Müzik çalınamadı."));
+                        bgMusic.play().catch(e => console.log("Müzik çalınamadı: ", e));
                     }
                 }, 500);
             });
         }
 
-        // Music Toggle Button
+        // Müzik Kontrol Butonu
         const musicBtn = document.getElementById('musicToggle');
         let isPlaying = false;
         if(musicBtn && bgMusic) {
